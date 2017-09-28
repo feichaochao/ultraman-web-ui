@@ -1,0 +1,55 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            历史GPS详情
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead>
+                    <tr>
+                        <th>推送时间</th>
+                        <th>距离</th>
+                        <th>经纬度</th>
+                        <th>地址</th>
+                        <th>设备号</th>
+                        <th>速度</th>
+                        <th>方向</th>
+                        <th>设备系统</th>
+                        <th>精度</th>
+                        <th>上传类型</th>
+                        <th>创建时间</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-if="historyGpsList.length!=0">
+                    <tr ng-repeat="item in historyGpsList" >
+                        <td>{{item.pushTime}}</td>
+                        <td>{{item.distance}}</td>
+                        <td>{{item.longitude}},{{item.latitude}}</td>
+                        <td>{{item.address}}</td>
+                        <td>{{item.equipmentId}}</td>
+                        <td>{{item.speed}}</td>
+                        <td>{{item.direction}}</td>
+                        <td>{{item.gpsSource}}</td>
+                        <td>{{item.accuracy}}</td>
+                        <td>{{item.locType}}</td>
+                        <td>{{item.addTime}}</td>
+                    </tr>
+                    </tbody>
+                    <tbody ng-if="historyGpsList.length==0">
+                    <tr>
+                        <td colspan="11" >暂无数据</td>
+
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div>
+                <my-pagination conf="paginationConf"></my-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="mobilePhone">手机号</label>
+                    <input type="text" class="form-control" id="mobilePhone" placeholder="请输入手机号" ng-model="mobilePhone">
+                </div>
+                <div class="form-group">
+                    <label for="eventStartTime">开始时间</label>
+                    <input type="text" class="form-control" ng-time  type="0" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii" id="eventStartTime" placeholder="请选择时间范围" ng-model="startTime" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="eventEndTime">结束时间</label>
+                    <input type="text" class="form-control" id="eventEndTime" placeholder="请选择时间范围" ng-model="endTime" readonly>
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="searchClick()">搜索</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead>
+                    <tr>
+                        <th>接受人ID</th>
+                        <th>状态</th>
+                        <th>模板类型</th>
+                        <th>接受的手机号码</th>
+                        <th>企业变量</th>
+                        <th>短信内容</th>
+                        <th>失败次数</th>
+                        <th>是否是语音短信</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-if="smsList.length!=0">
+                    <tr ng-repeat="item in smsList">
+                        <td>{{item.baseUserId}}</td>
+                        <td>
+                            <span ng-if="item.state=='done'">成功</span>
+                            <span ng-if="item.state=='init'">未发送</span>
+                            <span ng-if="item.state=='doing'">发送中</span>
+                        </td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.mobile}}</td>
+                        <td>{{item.parameter}}</td>
+                        <td>{{item.smsTemplate}}</td>
+                        <td>{{item.failTotal}}</td>
+                        <td>
+                            <span ng-if="item.isVoice=='0'">语音</span>
+                            <span ng-if="item.isVoice=='1'">非语言</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tbody ng-if="smsList.length==0">
+                    <tr>
+                        <td colspan="11" ng-if="!(!$scope.mobilePhone && !$scope.StartTime && !$scope.EndTime)">暂无数据</td>
+                        <td colspan="11" ng-if="!$scope.mobilePhone && !$scope.StartTime && !$scope.EndTime">请输入任意一个搜索条件，点击搜索</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <my-pagination conf="paginationConf"></my-pagination>
+            </div>
+        </div>
+    </div>
+</div>

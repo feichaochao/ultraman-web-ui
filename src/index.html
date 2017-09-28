@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>my test</title>
+        <meta name="description" content="">
+ <!--       <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/daterangepicker.css">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="./css/main.min.css">
+    </head>
+    <body ng-app="myApp">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="left_nav">
+            <div class="nav_main">
+                <ul class="clearFloat">
+                    <li ui-sref="eventOrder" class="nav_list">查询订单监控</li>
+                    <li ui-sref="historyGps" class="nav_list">查询历史Gps</li>
+                    <li ui-sref="openApi" class="nav_list">查询同步数据</li>
+                    <li ui-sref="smslist" class="nav_list">查询短信列表</li>
+                    <li ui-sref="smsStateList" class="nav_list">查询短信状态</li>
+                    <li ui-sref="pushList" class="nav_list">查询推送列表</li>
+                    <li ui-sref="feedBack" class="nav_list">查询截图反馈</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main_view" ui-view=""></div>
+        <script src="./vendor/jquery.min.js"></script>
+        <script src="./vendor/modernizr-2.8.3.min.js"></script>
+        <script src="./vendor/angular.js"></script>
+        <script src="./vendor/angular-ui-router.min.js"></script>
+        <script src="./vendor/ui-bootstrap-tpls.js"></script>
+        <script src="./vendor/moment.min.js"></script>
+        <script src="./vendor/daterangepicker.js"></script>
+        <script src="./js/app.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>

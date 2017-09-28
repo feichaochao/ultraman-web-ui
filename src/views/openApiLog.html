@@ -1,0 +1,66 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="tag">类别</label>
+                    <select  id="tag" class="form-control" ng-model="params.tag">
+                        <option value="ztoCompany" ng-selected = "1">添加企业
+                        <option value="ztoCar">添加车辆
+                        <option value="ztoNetwork">添加网点
+                        <option value="ztoTransport">添加任务订单
+                        <option value="ztoScan">扫描
+                        <option value="ztoNetworkMotify">修改网点
+                        <option value="ztoTransportMotify">修改任务
+                        <option value="toTransportDelete">撤回任务
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="type">类型</label>
+                    <select  id="type" class="form-control" ng-model="params.type">
+                        <option value="0" ng-selected = "1">所有
+                        <option value="1">错误
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="condition">查询条件</label>
+                    <input type="text" class="form-control" id="condition" placeholder="请输入模糊查询条件" ng-model="params.condition">
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="openFilter()">搜索</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead >
+                    <tr>
+                        <th>来源</th>
+                        <th>参数信息</th>
+                        <th>错误信息</th>
+                        <th>创建时间</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-if="openApiLogList.length!=0">
+                    <tr ng-repeat="item in openApiLogList" >
+                        <td>{{item.ownType}}</td>
+                        <td>{{item.message}}</td>
+                        <td>{{item.errorInfo}}</td>
+                        <td>{{item.createtime}}</td>
+                    </tr>
+                    </tbody>
+                    <tbody ng-if="openApiLogList.length==0">
+                    <tr>
+                        <td colspan="4">暂无数据</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div>
+                <my-pagination conf="paginationConf"></my-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+

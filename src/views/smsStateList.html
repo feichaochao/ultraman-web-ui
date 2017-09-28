@@ -1,0 +1,55 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="mobilePhone">手机号</label>
+                    <input type="text" class="form-control" id="mobilePhone" placeholder="请输入手机号" ng-model="mobilePhone">
+                </div>
+                <div class="form-group">
+                    <label for="eventStartTime">开始时间</label>
+                    <input type="text" class="form-control" ng-time type="0" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii" id="eventStartTime" placeholder="请选择时间范围" ng-model="startTime" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="eventEndTime">结束时间</label>
+                    <input type="text" class="form-control" id="eventEndTime" placeholder="请选择时间范围" ng-model="endTime" readonly>
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="searchClick()">搜索</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>返回结果</th>
+                        <th>发送号码</th>
+                        <th>时间</th>
+                        <th>发送平台</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-if="smsStateList.length!=0">
+                    <tr ng-repeat="item in smsStateList">
+                        <td>{{item.id}}</td>
+                        <td>{{item.result}}</td>
+                        <td>{{item.mobile}}</td>
+                        <td>{{item.createTime}}</td>
+                        <td>{{item.smsPlatform}}</td>
+                    </tr>
+                    </tbody>
+                    <tbody ng-if="smsStateList.length==0">
+                    <tr>
+                        <td colspan="11" ng-if="!(!$scope.mobilePhone && !$scope.StartTime && !$scope.EndTime)">暂无数据</td>
+                        <td colspan="11" ng-if="!$scope.mobilePhone && !$scope.StartTime && !$scope.EndTime">请输入任意一个搜索条件，点击搜索</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <my-pagination conf="paginationConf"></my-pagination>
+            </div>
+        </div>
+    </div>
+</div>

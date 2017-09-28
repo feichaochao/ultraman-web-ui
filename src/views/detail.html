@@ -1,0 +1,95 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            任务详情
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>监控事件类型</th>
+                    <th>监控开始时间</th>
+                    <th>监控结束时间</th>
+                    <th>抵达经纬度</th>
+                    <th>抵达地址</th>
+                    <th>监控状态</th>
+                    <th>监控范围</th>
+                    <th>前置点数</th>
+                    <th>后置点数</th>
+                    <th style="width:7.9%;">监控完成时间</th>
+                    <th style="padding-left:100px;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in detailList">
+                    <td>{{item.eventType}}</td>
+                    <td>{{item.startTime}}</td>
+                    <td>{{item.endTime}}</td>
+                    <td>{{item.longitude}},{{item.latitude}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.eventStatus}}</td>
+                    <td>{{item.meter}}</td>
+                    <td>{{item.beforeAction}}</td>
+                    <td>{{item.afterAction}}</td>
+                    <!--<td ng-if="item.mobilePhone">{{item.mobilePhone}}</td>-->
+                    <!--<td ng-if="!item.item.mobilePhone">无</td>-->
+                    <td>{{item.finishTime}}</td>
+                    <td>
+                        <button class="btn btn-info"  ng-if="item.eventState==0 || item.eventState==7" ng-click="showModify(item.id,item.eventState)">修改时间</button>
+                        <!--<a ui-sref="track({eventid:item.id})" style="margin-left:4px;" >查看轨迹</a>-->
+                        <a ng-click="jumpToTrack(item.id,item.keyId,item.startTime,item.endTime,item.finishTime)" style="margin-left:4px;" >查看轨迹</a>
+                        <a ui-sref="operation({eventid:item.id})" style="margin-left:4px;" >查看操作记录</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="myModelContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{paramsObj.title}}</h3>
+        </div>
+        <div class="modal-body">
+            <table>
+                <tr>
+                    <td>请选择时间（非必需）</td>
+                    <td>
+                        <input type="text" ng-model="paramsObj.modifyTime" defaulttime="" readonly ng-time datetype="0" format="YYYY-MM-DD HH:mm:ss">
+                    </td>
+                </tr>
+                <tr>
+                    <td>请输入修改原因（必需）</td>
+                    <td><input type="text" ng-model="paramsObj.operateReason" maxlength="100" style="width:100%;"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">
+                确认
+            </button>
+            <button class="btn btn-warning" ng-click="cancel()">退出</button>
+        </div>
+    </script>
+
+    <!--<div class="modal fade " tabindex="-1" role="dialog" id="modifyModal">-->
+        <!--<div class="modal-dialog" role="document">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                    <!--<h4 class="modal-title">提示</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--确定修改时间吗？-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+                    <!--<button type="button" class="btn btn-primary" ng-click="modify()">确定</button>-->
+                <!--</div>-->
+            <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+        <!--</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+</div>

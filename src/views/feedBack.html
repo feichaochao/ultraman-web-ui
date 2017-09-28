@@ -1,0 +1,88 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <form class="form-inline">
+
+                <div class="form-group">
+                    <label for="mobile">手机号</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="请输入手机号"  ng-model="mobile">
+                </div>
+                <button type="submit" class="btn btn-info" ng-click="feedBackClick()">搜索</button>
+            </form>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover ">
+                    <thead>
+                    <tr>
+                        <th style="width:14%;">内容</th>
+                        <th style="width:14%;">图片</th>
+                        <th>手机号</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-if="feedbackList.length!=0">
+                    <tr ng-repeat="item in feedbackList" >
+                        <td>{{item.content}}</td>
+                        <td >
+                            <div ng-repeat="images in item.image">
+                            <a  href="{{images}}" target="_blank"><img ng-src="{{images}}"  class="feed_image"/> </a>
+                            </div>
+                        </td>
+                        <td>{{item.mobile}}</td>
+                        <td>{{item.createTime}}</td>
+                        <td>{{item.type}}</td>
+                        <td>
+                            <button class="btn btn-info"  ui-sref="toEventOrder({mobile:item.mobile})" style="margin-left:4px;" >查看订单监控</button>
+                            <button class="btn btn-info"  ui-sref="toSmslist({mobile:item.mobile})" style="margin-left:4px;" >查看短信记录</button>
+                            <button class="btn btn-info"  ng-click="show()" style="margin-left:4px;" >通知用户(待开发)</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tbody ng-if="feedbackList.length==0">
+                    <tr>
+                        <td colspan="11" >暂无数据</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div>
+                <my-pagination conf="paginationConf"></my-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="modify.html">
+    <div class="modal-header">
+        <h3 class="modal-title">请选择通知类型</h3>
+    </div>
+    <div class="modal-body">
+        <table>
+            <label>
+                <input type="radio" ng-model="color.name" ng-value="message">
+                短信
+            </label><br/>
+            <label>
+                <input type="radio" ng-model="color.name" value="phone">
+                电话
+            </label><br/>
+            <label>
+                <input type="radio" ng-model="color.name" value="chat">
+                微信
+            </label><br/>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">
+            确认
+        </button>
+        <button class="btn btn-warning" ng-click="cancel()">退出</button>
+    </div>
+</script>
+

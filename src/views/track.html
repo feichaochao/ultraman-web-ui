@@ -1,0 +1,42 @@
+<div class="container-fluid marginTop15px">
+    <loading defaultshow="showloading"></loading>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            轨迹详情
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+            <table class="table table-hover ">
+                <thead>
+                <tr>
+                    <th>上报Gps时间</th>
+                    <th>相隔距离</th>
+                    <th>经纬度</th>
+                    <th>地址</th>
+
+                </tr>
+                </thead>
+                <tbody ng-if="trackList.length!=0">
+                <tr ng-repeat="item in trackList" ng-click="jumpToGps()">
+                    <td>{{item.pushTime}}</td>
+                    <td>{{item.meter}}</td>
+                    <td>{{item.longitude}},{{item.latitude}}</td>
+                    <td>{{item.address}}</td>
+                </tr>
+                </tbody>
+                <tbody ng-if="trackList.length==0" ng-click="jumpToGps()">
+                    <tr>
+                      <td colspan="4">暂无数据</td>
+                    </tr>
+                </tbody>
+
+            </table>
+            </div>
+            <div>
+                <my-pagination conf="paginationConf"></my-pagination>
+            </div>
+
+        </div>
+    </div>
+</div>
+

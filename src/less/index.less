@@ -1,0 +1,137 @@
+/*.animal {
+  background-color: black;
+  color: white;
+}
+.bear {
+  &:extend(.animal);
+  background-color: brown;
+}*/
+
+
+/*
+@media screen {
+  .selector {  /!* ruleset inside nested media - top level extend works *!/
+    color: blue;
+  }
+  @media (min-width: 1023px) {
+    .selector {  /!* ruleset inside nested media - top level extend works *!/
+      color: blue;
+    }
+  }
+}
+
+.topLevel:extend(.selector) {} /!* top level extend matches everything *!/*/
+
+
+//@variable: .bucket;
+//@{variable} { // interpolated selector
+//  color: blue;
+//}
+//.some-class:extend(.bucket) {}
+
+//li.list > a {
+//  text-decoration:solid;
+//}
+//button.list-style {
+//  &:extend(li.list > a); // use the same list styles
+//}
+//
+//#outer {
+//  .inner {
+//    color: red;
+//  }
+//}
+//
+//.c {
+//  #outer > .inner;
+//}
+//
+//#my-library {
+//  .my-mixin() {
+//    color: black;
+//  }
+//}
+//// which can be used like this
+//.class {
+//  #my-library > .my-mixin();
+//}
+
+
+
+/*.foo (@bg: #f5f5f5, @color: #900) {
+  background: @bg;
+  color: @color;
+}
+.unimportant {
+  .foo(1);
+}
+.important {
+  .foo(2) !important;
+}*/
+
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+ol,ul{
+  margin: 0;
+}
+li {
+  list-style-type: none;
+}
+.clearFloat{
+  zoom: 1;
+}
+.clearFloat:after{
+  clear: both;
+  display: block;
+  content: '';
+  height: 0;
+}
+.main_view{
+  margin-top: 60px;
+}
+.left_nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  color: #444;
+  border: 1px solid #ddd;
+  z-index: 10;
+}
+.nav_main{
+  width: 100%;
+}
+.nav_list {
+  line-height: 30px;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px 15px;
+  cursor: pointer;
+  float: left;
+  width: calc(100% / 7);
+}
+.nav_list:hover {
+  background-color: #eee;
+}
+
+.feed_image{
+  display: block;
+  width: 37%;
+  height: 5%;
+  margin-right: 5px;
+  cursor: pointer;
+  float: left;
+}
+@media screen and (max-width: 550px) {
+  .main_view{
+    margin-top: 200px;
+  }
+}
